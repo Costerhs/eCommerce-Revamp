@@ -1,0 +1,22 @@
+.aboutUs {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    min-height: calc(100vh - 120px);
+    .container {
+        .aboutUs__title {
+            font-weight: bold;
+            font-size: 6vh;
+            text-align: left;
+        }
+        .aboutUs__description {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-size: 5vh;
+            p {
+                // text-align: left;
+                // width: 700px;
+            }
+        }
+    }
+}

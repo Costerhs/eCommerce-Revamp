@@ -1,0 +1,31 @@
+.products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        h2 {
+            font-size: 30px;
+            text-align: left;
+        }
+        .products__dif {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    }
+}
+
+@media (max-width:576px) {
+    .products {
+        .container {
+            .products__dif {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    }
+}

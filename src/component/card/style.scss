@@ -1,0 +1,48 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+    width: 220px;
+    height: 200px;
+    padding: 7px 15px 24px 15px;
+    align-items: center;
+    box-shadow: 1px 2px 16px 3px rgba(54, 58, 69, 0.08);
+    border-radius: 8.00611px;
+    position: relative;
+    .card__btns {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        img {
+            cursor: pointer;
+        }
+    }
+    .card__del {
+       cursor: pointer;
+    }
+    .card__img {
+        height: 106px;
+        img {
+            width:121px;
+        }
+    }
+    .card__title {
+        color: #363A45;
+        font-size: 16px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 184px;
+        overflow: hidden;
+    }
+    .card__price {
+        text-align: left;
+        letter-spacing: 0.5px;
+        width: 100%;
+        font-size: 16px;
+        color: #00C65E;
+    }
+}

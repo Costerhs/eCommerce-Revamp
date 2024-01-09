@@ -1,0 +1,26 @@
+.pagination {
+    display: flex;
+    gap: 10px;
+    .pagination__arrow {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .pagination__arrow-disabled {
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .pagination__num,.pagination__num-active {
+        color: #363A45;
+        padding: 6px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .pagination__num-active {
+        color: white;
+        background: #00C65E;
+       
+    }
+}

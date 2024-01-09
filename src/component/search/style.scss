@@ -1,0 +1,18 @@
+.search {
+    border-radius: 18px;
+    box-shadow: 1px 2px 16px 3px rgba(21, 21, 22, 0.08);
+    overflow: hidden;
+    height: 38px;
+    display: flex;
+    width: 300px;
+    .search__inp {
+        padding: 9px 10px 9px 10px;
+        position: relative;
+    }
+    .search__img {
+        width: 15px;
+        height: 15px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+}

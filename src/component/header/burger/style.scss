@@ -1,0 +1,26 @@
+.burger {
+    position: fixed;
+    background: white;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25%;
+    h2 {
+        color: #00C65E;
+        font-size: 40px;
+    }
+    .burger__links {
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        .burger__link-active {
+            background: #b3eecf;
+            color: black;
+            border-bottom: 2px solid  #00C65E;
+        }
+    }
+}

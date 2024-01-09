@@ -1,0 +1,80 @@
+.authreg {
+    width: 56%;
+    background: url(../../../assets/img/login.png) no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    h2 {
+        font-size: 30px;
+    }
+    .authreg__link {
+        text-decoration: revert;
+    }
+    .authreg__form {
+        border: 1px solid rgb(238, 232, 232);
+        border-radius: 10px;
+        padding: 10px 20px;
+        width: 80%;
+        max-width: 300px;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        .authreg__item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            width: 100%;
+            .authreg__label {
+                font-size: 14px;
+                margin-left: 6px;
+                text-transform: capitalize;
+            }   
+            input[type=file] {
+                border: none;
+               
+            }
+            ::-webkit-file-upload-button {
+                background:#00C65E ;
+                border: none;
+                padding: 4px 6px;
+                border-radius: 3px;
+                color: white;
+            }
+            .authreg__inp {
+                padding: 2px 10px;
+                border: 1px solid rgb(206, 205, 205);
+                border-radius: 10px;
+                width: 100%;
+            }
+            .authreg__error {
+                font-size: 12px;
+                color: red;
+                margin-left: 10px;
+                position: absolute;
+                bottom: -14px;
+            }
+        }
+        .authreg__btn {
+            background: #00C65E;
+            border-radius: 10px;
+            color: #FFFFFF;
+            font-size: 14px;
+            width: 80%;
+            padding: 4px 0;
+            margin-top: 10px;
+        }
+        .authreg__acc {
+            font-size: 14px;
+            border-bottom: 1px solid black;
+            width: 200px;
+            cursor: pointer;
+        }
+    }
+}
+

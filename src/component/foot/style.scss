@@ -1,0 +1,22 @@
+.foot {
+    background: #00C65E;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    h2 {
+        color: white;
+        font-size: 20px;
+    }
+    .foot__info {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .foot__text {
+            color: white;
+        }
+        .foot__icon {
+            cursor: pointer;
+        }
+    }
+}

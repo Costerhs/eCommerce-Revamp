@@ -1,0 +1,21 @@
+.slide {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .slide__pagination {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        .slide__btn {
+            width: 8px;
+            height: 8px;
+            border-radius: 10px;
+            border: 1px solid black;
+            &-active {
+                background-color: black;
+            }
+        }
+    }
+}

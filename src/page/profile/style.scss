@@ -1,0 +1,46 @@
+.profile {
+    margin-top: 40px;
+    min-height: calc(100vh - 120px);
+    .profile__info {
+        .container {
+        flex-direction: row;
+        gap: 20px;
+        .profile__img {
+            width: 30%;
+            border-radius: 100px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                
+            }
+        }
+        .profile__description {
+            .profile__name {
+                color: #363A45;
+            }
+            .profile__double {
+
+            }
+            .profile__birth {
+
+            }
+            .profile__about {
+
+            }
+        }
+    }
+    }
+}
+
+@media (max-width:576px) {
+    .profile {
+        .profile__info {
+            .container {
+                flex-direction: column;
+                .profile__img {
+                    width: 70%;
+                }
+            }
+        }
+    }
+}

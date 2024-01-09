@@ -1,0 +1,31 @@
+.auth__info {
+    background: #00C65E;
+    color: white;
+    width: 44%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 10%;
+    .auth__info-title {
+        text-align: left;
+        font-size: 7vw;
+    }
+    .auth__description {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        font-size: 2vw;
+        p {
+            margin:  auto 0;
+            display: flex;
+            align-items: center;
+        }
+        .icon {
+            margin-right: 5px;
+        }
+    }
+}
