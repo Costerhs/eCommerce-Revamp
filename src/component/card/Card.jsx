@@ -1,29 +1,22 @@
 import './style.scss'
 import favorite from '../../assets/img/favorite.svg'
 import favoriteEmpty from '../../assets/img/favoriteEmpty.svg'
-import { addBasket, addFavorite, deleteFavorite } from '../../store/reducers/ActionCreator'
+import { addFavorite, deleteFavorite } from '../../store/reducers/ActionCreator'
 import { useDispatch } from 'react-redux'
 import { delFavorite } from '../../store/reducers/ProductSlice'
 import { SlBasket } from 'react-icons/sl'
 import Swal from 'sweetalert2'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const Card = ({ data, isDel }) => {
+const Card = ({ data }) => {
     const dispatch = useDispatch()
     const token = localStorage.getItem('token')
-    const [isFavorite,setIsFavorite] = useState(data.isFavorite);
 
     const favoriteF = () => {
-        if (isFavorite) {
+        if (data.isFavorite) {
             dispatch(deleteFavorite(data._id))
-            .then(() => {
-                setIsFavorite(!isFavorite)
-            })
         } else {
             dispatch(addFavorite(data._id))
-            .then(() => {
-                setIsFavorite(!isFavorite)
-            })
         }
     }
 
@@ -31,7 +24,7 @@ const Card = ({ data, isDel }) => {
     return (
         <div className='card'>
             <div className="card__btns">
-                {token && <><img src={isFavorite ? favorite : favoriteEmpty}
+                {token && <><img src={data.isFavorite ? favorite : favoriteEmpty}
                     alt="favorite"
                     onClick={favoriteF} /></>}
 

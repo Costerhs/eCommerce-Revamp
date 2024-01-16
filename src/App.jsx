@@ -6,7 +6,6 @@ import Footer from './component/foot/Footer'
 import Header from './component/header/Header'
 import AboutUs from './page/aboutUs/AboutUs'
 import Auth from './page/auth/Auth'
-import Basket from './page/basket/Basket'
 import FavoritesPage from './page/favoritesPage/FavoritesPage'
 import MainPage from './page/main/MainPage'
 import ProductsPage from './page/productsPage/ProductsPage'
@@ -33,7 +32,6 @@ const App = () => {
         {token && <>
           <Route path={'/favorites'} element={<FavoritesPage />} />
           {/* <Route path={'/profile'} element={<Profile />} /> */}
-          {/* <Route path='/basket' element={<Basket />} /> */}
         </>}
         <Route path='auth' element={<Auth />} />
          <Route path={'/'} element={<MainPage />} />

@@ -7,7 +7,7 @@ import { getProducts } from '../../store/reducers/ActionCreator'
 import './style.scss'
 
 const Products = ({ title, products }) => {
-    const [partOfProduct, setPartOfProduct] = useState()
+    const [partOfProduct, setPartOfProduct] = useState([])
     const load = useSelector(el => el.productReducer.load)
     const [activeCategory, setActiveCategory] = useState(null)
     const [searchText, setSearchText] = useState('');
@@ -35,16 +35,11 @@ const Products = ({ title, products }) => {
                     {/* <Category setActiveCategory={setActiveCategory} activeCategory={activeCategory} /> */}
                     <Search setSearchText={setSearchText} searchText={searchText} />
                 </div>
-                <ProductsList activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} />
+                <ProductsList  products={searchText ? partOfProduct : products} load={load} />
+                {/* <ProductsList activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} /> */}
             </div>
         </div>
     )
 }
 
 export default Products
-/*
-    const test = useSelector(el => el.productReducer)
-
-    useEffect(() => {
-        console.log(test)
-    }, [test])*/

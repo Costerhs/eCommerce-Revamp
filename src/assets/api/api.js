@@ -13,12 +13,11 @@ let header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
 
 export const userApi = {
     register(data, setIsLoad) {
-        // data.phone_number = "+" + data.phone_number
-        // if (data.avatarka["length"] === 0) delete data.avatarka
-        // else data.avatarka = data.avatarka[0]
+        if (data.avatar["length"] === 0) delete data.avatar
+        else data.avatar = data.avatar[0]
 
-        // let newFormData = changeObjToForm(data)
-        return instance.post('auth/register', data)
+        let newFormData = changeObjToForm(data)
+        return instance.post('auth/register', newFormData)
             .then((el) => {
                 setIsLoad(false)
                 return modal.fire({

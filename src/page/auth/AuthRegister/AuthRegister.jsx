@@ -31,9 +31,7 @@ const AuthRegister = () => {
             setIsLoad(true)
             await userApi.register(data, setIsLoad)
         }
-        // await axios.get('http://localhost:3000/').then(el => {
-        //     console.log(el);
-        // })
+
     }
 
     return (
@@ -41,7 +39,7 @@ const AuthRegister = () => {
             <h2>{isSignIn ? 'Sign In' : 'Sign Up'}</h2>
             <form className='authreg__form' onSubmit={handleSubmit(onSubmit)}>
                 {formsData.map((el, ind) => {
-                    if (isSignIn && (el.name === 'avatarka' || el.name === 'phone_number' || el.name === 'birth_date' || el.name === 'username' || el.name === 'about')) return null;
+                    if (isSignIn && (el.name === 'avatar' || el.name === 'phone_number' || el.name === 'birth_date' || el.name === 'username' || el.name === 'about')) return null;
                     return <div key={ind} className="authreg__item">
                         <label htmlFor={el.name} className="authreg__label">{el.title}</label>
                         <input type={el.type} name={el.name} className="authreg__inp" {...register(el.name, el.settings)} />

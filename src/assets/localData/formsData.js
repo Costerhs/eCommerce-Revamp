@@ -21,17 +21,18 @@ const formsData = [
         },
 
     },
-    // {
-    //     name: "phone_number",
-    //     title: "phone number",
-    //     type: 'number',
-    //     settings: {
-    //         pattern: {
-    //             value: /^([+996]{1}[0-9]{11})?$/,
-    //             message: 'Invalid numb'
-    //         }
-    //     }
-    // },
+    {
+        name: "phone_number",
+        title: "phone number",
+        type: 'number',
+        settings: {
+            pattern: {
+                value: /^([+996]{1}[0-9]{11})?$|^(\+7[0-9]{10}|7[0-9]{10})$/,
+                // value: /^([+996]{1}[0-9]{11})?$/,
+                message: 'Invalid number'
+            }
+        }
+    },
     {
         name: "password",
         title: "password",
@@ -45,11 +46,11 @@ const formsData = [
             minLength: { value: 6, message: 'минимум 6 символов' }
         }
     },
-    // {
-    //     name: "avatarka",
-    //     title: "avatarka",
-    //     type: 'file',
-    //     settings: {}
-    // }
+    {
+        name: "avatar",
+        title: "avatar",
+        type: 'file',
+        settings: {}
+    }
 ]
 export default formsData

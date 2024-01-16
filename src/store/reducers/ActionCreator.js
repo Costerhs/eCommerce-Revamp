@@ -30,7 +30,6 @@ const token = localStorage.getItem('token');
 export const getProducts = createAsyncThunk('products', async () => {
     const res = await productApi.getAllProduct();
     const product = res.data.posts;
-    console.log(token);
     
     if (token) {
         const favArray = await productApi.getFavorites().then(el => el.data);
@@ -47,16 +46,15 @@ export const getProducts = createAsyncThunk('products', async () => {
 });
 export const addFavorite = createAsyncThunk('favorite',
     async (id) => {
-        let res = await productApi.postFavorite(id)
-        return { id: id, isFavorite: res.data.success }
+        await productApi.postFavorite(id)
+        return id
     }
 )
 
 export const deleteFavorite = createAsyncThunk('favoriteDel',
     async (id) => {
-        const res = await productApi.delFavorite(id)
-        getProducts()
-        return res.data.id
+        await productApi.delFavorite(id)
+        return id
     }
 )
 
@@ -106,34 +104,6 @@ export const getUser = createAsyncThunk('user',
         return res.data
     }
 )
-
-export const getBasket = createAsyncThunk('getBasket',
-    async () => {
-        const res = await productApi.getBasket()
-        let basketsData = res.data
-        let total = 0;
-        let cArr = {};
-        basketsData.map(el => {
-            total += el.total
-            if (cArr[el.products_data[0].id]) {
-                cArr[el.products_data[0].id].ids.push(el.id)
-            } else {
-                cArr[el.products_data[0].id] = { ids: [el.id], data: el.products_data, total: el.total }
-            }
-        })
-        return { total: total, data: cArr }
-    }
-)
-
-export const addBasket = createAsyncThunk('addBasket', async (id) => {
-    const res = await productApi.addBasket(id)
-    return res.data
-})
-
-export const deleteBasket = createAsyncThunk('deleteBasket', async (id) => {
-    const res = await productApi.deleteBasket(id)
-    return res.data
-})
 
 export const deletePack = createAsyncThunk('deletePack', async (arr) => {
     //когда num будет количеству продуктов то будет await чтобы после await сделать запрос на get baskets
