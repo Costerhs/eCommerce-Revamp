@@ -32,7 +32,7 @@ const Products = ({ title, products }) => {
             <div className="container">
                 <h2>{title}</h2>
                 <div className="products__dif">
-                    <Category setActiveCategory={setActiveCategory} activeCategory={activeCategory} />
+                    {/* <Category setActiveCategory={setActiveCategory} activeCategory={activeCategory} /> */}
                     <Search setSearchText={setSearchText} searchText={searchText} />
                 </div>
                 <ProductsList activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} />

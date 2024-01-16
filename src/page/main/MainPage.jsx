@@ -17,7 +17,7 @@ const MainPage = () => {
     }, [])
 
     useEffect(() => {
-        console.log(products)
+        // console.log(products)
     }, [products])
 
     return (

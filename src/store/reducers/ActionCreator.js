@@ -29,15 +29,16 @@ const token = localStorage.getItem('token');
 
 export const getProducts = createAsyncThunk('products', async () => {
     const res = await productApi.getAllProduct();
-    const product = res.data;
-
+    const product = res.data.posts;
+    console.log(token);
+    
     if (token) {
-        const favArray = await productApi.getFavorites();
-
+        const favArray = await productApi.getFavorites().then(el => el.data);
+        
         product.forEach(el => {
-            const favProduct = favArray.data.find(elem => elem.product === el.id);
+            const favProduct = favArray.find(elem => elem === el._id);
             if (favProduct) {
-                el.deleteId = favProduct.id;
+                el.isFavorite = true;
             }
         });
     }
@@ -47,7 +48,7 @@ export const getProducts = createAsyncThunk('products', async () => {
 export const addFavorite = createAsyncThunk('favorite',
     async (id) => {
         let res = await productApi.postFavorite(id)
-        return { id: id, deleteId: res.data.id }
+        return { id: id, isFavorite: res.data.success }
     }
 )
 
@@ -74,19 +75,28 @@ export const getProductsOfCategories = createAsyncThunk('productOfcategory',
 )
 
 export const getFavoritsThunk = createAsyncThunk('getFavorites',
-    async () => {
+    async () => { 
         const res = await productApi.getAllProduct()
-        const favArray = await productApi.getFavorites()
-        let product = res.data
-        product.map(el => {
-            for (let elem of favArray.data) {
-                if (el.id == elem.product) {
-                    el['deleteId'] = elem.id;
-                }
+        const favArray = await productApi.getFavorites().then(el => el.data)
+        let product = res.data.posts
+
+        product.forEach(el => {
+            const favProduct = favArray.includes(el._id);
+            if (favProduct) {
+                el.isFavorite = true;
             }
         });
-        let filteredProduct = product.filter(el => el.deleteId)
+        let filteredProduct = product.filter(el => el.isFavorite);
+        
         return filteredProduct
+    }
+)
+
+export const getFavorites = createAsyncThunk('getFavorites',
+    async () => {
+        const favArray = await productApi.getFavorites();
+        console.log(favArray);
+        
     }
 )
 

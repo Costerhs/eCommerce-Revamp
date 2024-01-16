@@ -10,7 +10,7 @@ const Pagination = ({ lengths, setOrder, order }) => {
 
     useEffect(() => {
         setPagNum(Array(Math.ceil(lengths / 4)).fill(null))
-        console.log(lengths, pagNum.length, order)
+        // console.log(lengths, pagNum.length, order)
         if (lengths % 4 === 0 && pagNum.length == order) {
             setOrder(pagNum.length - 1)
         }

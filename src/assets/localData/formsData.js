@@ -5,7 +5,7 @@ const formsData = [
         type: 'text',
         settings: {
             required: '*это поле обязательна к заполнению',
-            // minLength: { value: 2, message: 'минимум 2 буквы' }
+            minLength: { value: 3, message: 'минимум 3 символа' }
         }
     },
     {
@@ -14,10 +14,10 @@ const formsData = [
         type: 'text',
         settings: {
             required: '*это поле обязательна к заполнению', 
-            // pattern: {
-            //     value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-            //     message: 'Invalid URL'
-            // }
+            pattern: {
+                value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                message: 'Invalid URL'
+            }
         },
 
     },
@@ -38,11 +38,11 @@ const formsData = [
         type: 'password',
         settings: {
             required: '*это поле обязательна к заполнению', 
-            // pattern: {
-            //     value: /(?=.*[0-9])/g,
-            //     message: 'должна быть хотя бы 1 цифра'
-            // },
-            // minLength: { value: 6, message: 'минимум 6 символов' }
+            pattern: {
+                value: /(?=.*[0-9])/g,
+                message: 'должна быть хотя бы 1 цифра'
+            },
+            minLength: { value: 6, message: 'минимум 6 символов' }
         }
     },
     // {

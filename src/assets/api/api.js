@@ -20,7 +20,6 @@ export const userApi = {
         // let newFormData = changeObjToForm(data)
         return instance.post('auth/register', data)
             .then((el) => {
-                console.log('asdfas',el);
                 setIsLoad(false)
                 return modal.fire({
                     position: 'center',
@@ -31,25 +30,27 @@ export const userApi = {
                 
             }).catch((el) => {
                 setIsLoad(false)
-                let errorMess = Object.values(el.response.data)[0][0]
+                let errorMess = Object.values(el.response.data)[0];
                 modal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: errorMess,
+                    text: errorMess
                 })
             })
     },
-    getUser(username) {
-        return instance.get('users/user/')
-            .then(el => {
-                let arrOfUser = el.data
-                let user = arrOfUser.find(el => el.username === username)
-                setLocal('userId', user._id)
-                setLocal('username', user.username)
-                setLocal('avatarka', user.avatarka)
-            })
-    },
+    // getUser(username) {
+    //     return instance.get('users/user/')
+    //         .then(el => {
+    //             let arrOfUser = el.data
+    //             let user = arrOfUser.find(el => el.username === username)
+    //             setLocal('userId', user._id)
+    //             setLocal('username', user.username)
+    //             setLocal('avatarka', user.avatarka)
+    //         })
+    // },
     signIn(data, navigate, setIsLoad) {
+        console.log(data);
+        
         return instance.post('auth/login', data)
             .catch(() => {
                 setIsLoad(false)
@@ -61,8 +62,8 @@ export const userApi = {
             })
             .then(user => {
                 setLocal('token', user.data.token)
-                setLocal('userId', user._id)
-                setLocal('username', user.username)
+                setLocal('userId', user.data._id)
+                setLocal('username', user.data.username)
                 setIsLoad(false)
                 navigate('/')
                 window.location.reload()
@@ -76,12 +77,12 @@ export const userApi = {
 
 export const productApi = {
     getAllProduct() {
-        return instance.get('products/product')
+        return instance.get('post',{ headers: header })
     },
     postFavorite(id) {
-        const product = { "product": id }
+        const product = { "id": id }
 
-        return instance.post(`favorites/`, product, { headers: header })
+        return instance.patch(`post/favorite`, product, { headers: header })
     },
     getCategory() {
         return instance.get('categories/category/')
@@ -93,10 +94,12 @@ export const productApi = {
             })
     },
     getFavorites() {
-        return instance.get('favorites/', { headers: header })
+        return instance.get('post/favorite', { headers: header })
     },
     delFavorite(id) {
-        return instance.delete('favorites/' + id + '/', { headers: header })
+        const product = { "id": id }
+
+        return instance.patch(`post/deleteFavorite`, product, { headers: header })
     },
     getBasket() {
         return instance.get('baskets/', { headers: header })

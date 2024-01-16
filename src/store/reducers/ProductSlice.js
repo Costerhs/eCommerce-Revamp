@@ -74,7 +74,7 @@ export const ProductsSlice = createSlice({
         [addFavorite.fulfilled.type]: (state, action) => {
             state.products.map(el => {
                 if (el.id === action.payload.id) {
-                    el.deleteId = action.payload.deleteId
+                    el.isFavorite = action.payload.isFavorite
                 }
             })
         }

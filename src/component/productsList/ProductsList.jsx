@@ -9,7 +9,6 @@ import { useLocation } from 'react-router-dom'
 const ProductsList = ({ load, products, activeCategory }) => {
     const [order, setOrder] = useState(1)
     const isDel = useLocation().pathname.indexOf('favorites')
-
     const productListRef = useRef(null);
     useEffect(() => {
         //когда меняется категория то пагинация сбрасывается

@@ -13,16 +13,16 @@ import ProductsPage from './page/productsPage/ProductsPage'
 import Profile from './page/profile/Profile'
 
 const App = () => {
-  // const locat = useLocation();
-  // const [location, setLocation] = useState(false);
-  // const token = localStorage.getItem('token')
-  // useEffect(() => {
-  //   if (locat.pathname === "/auth") {
-  //     setLocation(true);
-  //   } else {
-  //     setLocation(false);
-  //   }
-  // }, [locat]);
+  const locat = useLocation();
+  const [location, setLocation] = useState(false);
+  const token = localStorage.getItem('token')
+  useEffect(() => {
+    if (locat.pathname === "/auth") {
+      setLocation(true);
+    } else {
+      setLocation(false);
+    }
+  }, [locat]);
 
 
 
@@ -30,15 +30,15 @@ const App = () => {
     <div className="App">
       {!location && <Header />}
       <Routes>
-        {/* {token && <>
+        {token && <>
           <Route path={'/favorites'} element={<FavoritesPage />} />
-          <Route path={'/profile'} element={<Profile />} />
-          <Route path='/basket' element={<Basket />} />
-        </>} */}
+          {/* <Route path={'/profile'} element={<Profile />} /> */}
+          {/* <Route path='/basket' element={<Basket />} /> */}
+        </>}
         <Route path='auth' element={<Auth />} />
-        {/* <Route path={'/'} element={<MainPage />} />
+         <Route path={'/'} element={<MainPage />} />
         <Route path={'/products'} element={<ProductsPage />} />
-        <Route path='/aboutUs' element={<AboutUs />} /> */}
+        <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       {!location && <Footer />}
     </div>
