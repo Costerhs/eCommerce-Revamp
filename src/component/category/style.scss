@@ -11,15 +11,21 @@
             padding: 2px 4px;
             cursor: pointer;
             &:hover {
-                background: #b3eecf;
-            color: black;
-            border-bottom: 2px solid  #00C65E;
+                background: #c3dfd0;
+                color: black;
+                border-bottom: 2px solid  #4cb37c;
             }
         }
         .category__item-active {
             background: #b3eecf;
             color: black;
+            font-weight: bold;
             border-bottom: 2px solid  #00C65E;
+            &:hover{
+                background: #b3eecf;
+
+                border-bottom: 2px solid  #00C65E;
+            }
         }
     }
 }

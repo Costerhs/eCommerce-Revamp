@@ -38,8 +38,17 @@
     }
     .card__title {
         color: #363A45;
-        font-size: 16px;
+        font-size: 18px;
         white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 184px;
+        overflow: hidden;
+    }
+    .card__category {
+        color: #666d7e;
+        font-size: 12px;
+        white-space: nowrap;
+        font-weight: 500;
         text-overflow: ellipsis;
         width: 184px;
         overflow: hidden;

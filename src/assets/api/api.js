@@ -84,16 +84,19 @@ export const productApi = {
         return instance.patch(`post/favorite`, product, { headers: header })
     },
     getCategory() {
-        return instance.get('categories/category/')
+        return instance.get('category')
     },
     getProductsOfCategory(id) {
-        return instance.get(`categories/category/${id}/`)
-            .then((el) => {
-                console.log(el)
-            })
+        return instance.get(`post/category/${id}/`)
     },
     getFavorites() {
         return instance.get('post/favorite', { headers: header })
+    },
+    getPartOfProducts(data) {
+        const { category, searchText } = data;
+        const url = `post/part/${category || 0}/${searchText || ''}`;
+        return instance.get(url)
+        .then(el => el.data);
     },
     delFavorite(id) {
         const product = { "id": id }

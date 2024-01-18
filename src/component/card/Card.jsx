@@ -8,9 +8,10 @@ import { SlBasket } from 'react-icons/sl'
 import Swal from 'sweetalert2'
 import { useEffect, useState } from 'react'
 
-const Card = ({ data }) => {
+const Card = ({ data, category }) => {
     const dispatch = useDispatch()
     const token = localStorage.getItem('token')
+
 
     const favoriteF = () => {
         if (data.isFavorite) {
@@ -32,6 +33,10 @@ const Card = ({ data }) => {
             <div className="card__img">
                 <img src={`http://localhost:3000/uploads/${data.image}`} alt="img" />
             </div>
+            {category && <div className="card__category">
+                {category.name}
+            </div>}
+            
             <div className="card__title">
                 {data.title}
             </div>

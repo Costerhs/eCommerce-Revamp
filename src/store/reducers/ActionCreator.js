@@ -44,6 +44,24 @@ export const getProducts = createAsyncThunk('products', async () => {
 
     return product;
 });
+
+export const getPartOfProducts = createAsyncThunk('partOfProducts', async (data) => {
+    const product = await productApi.getPartOfProducts(data);
+    
+    if (token) {
+        const favArray = await productApi.getFavorites().then(el => el.data);
+        
+        product.forEach(el => {
+            const favProduct = favArray.find(elem => elem === el._id);
+            if (favProduct) {
+                el.isFavorite = true;
+            }
+        });
+    }
+
+    return product;
+});
+
 export const addFavorite = createAsyncThunk('favorite',
     async (id) => {
         await productApi.postFavorite(id)
@@ -61,16 +79,18 @@ export const deleteFavorite = createAsyncThunk('favoriteDel',
 export const getCategory = createAsyncThunk('category',
     async () => {
         const res = await productApi.getCategory()
-        return res.data
+        console.log(res.data.categories);
+        
+        return res.data.categories
     }
 )
 
-export const getProductsOfCategories = createAsyncThunk('productOfcategory',
-    async (id) => {
-        const res = await productApi.getProductsOfCategory(id)
-        return res.data
-    }
-)
+// export const getProductsOfCategories = createAsyncThunk('productOfcategory',
+//     async (id) => {
+//         const res = await productApi.getProductsOfCategory(id)
+//         return res.data
+//     }
+// )
 
 export const getFavoritsThunk = createAsyncThunk('getFavorites',
     async () => { 

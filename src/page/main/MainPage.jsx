@@ -16,10 +16,6 @@ const MainPage = () => {
         dispatch(getProducts())
     }, [])
 
-    useEffect(() => {
-        // console.log(products)
-    }, [products])
-
     return (
         <div className='main'>
             <Slider />

@@ -3,39 +3,37 @@ import { useDispatch, useSelector } from 'react-redux'
 import Category from '../category/Category'
 import ProductsList from '../productsList/ProductsList'
 import Search from '../search/Search'
-import { getProducts } from '../../store/reducers/ActionCreator'
+import { getCategory, getPartOfProducts } from '../../store/reducers/ActionCreator'
 import './style.scss'
 
 const Products = ({ title, products }) => {
-    const [partOfProduct, setPartOfProduct] = useState([])
     const load = useSelector(el => el.productReducer.load)
+    const partOfProduct = useSelector(el => el.productReducer.partOfProduct)
     const [activeCategory, setActiveCategory] = useState(null)
     const [searchText, setSearchText] = useState('');
 
-    useEffect(() => {
-        let arr = products.filter(el => el.category === activeCategory)
-        setPartOfProduct(arr)
-        setSearchText('')
-    }, [activeCategory])
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        let arr = products.filter(el => {
-            return el.title.toLowerCase().includes(searchText.toLowerCase())
-        })
+        dispatch(getCategory())
+    }, [])
 
-        setPartOfProduct(arr)
-        setActiveCategory(null)
-    }, [searchText])
+    useEffect(() => {
+        if(activeCategory || searchText) {
+            dispatch(getPartOfProducts({category:activeCategory,searchText:searchText}))
+        }
+    }, [activeCategory,searchText])
 
     return (
         <div className='products'>
             <div className="container">
                 <h2>{title}</h2>
                 <div className="products__dif">
-                    {/* <Category setActiveCategory={setActiveCategory} activeCategory={activeCategory} /> */}
+                    <Category  setActiveCategory={setActiveCategory} activeCategory={activeCategory} />
                     <Search setSearchText={setSearchText} searchText={searchText} />
                 </div>
-                <ProductsList  products={searchText ? partOfProduct : products} load={load} />
+                <ProductsList  activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} />
+                {/* <ProductsList  activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} /> */}
                 {/* <ProductsList activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} /> */}
             </div>
         </div>
