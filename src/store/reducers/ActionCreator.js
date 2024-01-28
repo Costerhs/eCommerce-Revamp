@@ -121,7 +121,17 @@ export const getFavorites = createAsyncThunk('getFavorites',
 export const getUser = createAsyncThunk('user',
     async (id) => {
         const res = await userApi.getUserById(id)
-        return res.data
+        const data = res.data
+        
+        return data
+    }
+)
+export const getUserPost = createAsyncThunk('usersPost',
+    async (id) => {
+        const res = await productApi.getProductsOfUser(id)
+        const data = res.data
+        
+        return data
     }
 )
 
@@ -139,3 +149,8 @@ export const deletePack = createAsyncThunk('deletePack', async (arr) => {
     }
     return
 })
+
+// export const createPost = createAsyncThunk('createPost', async (data) => {
+//     console.log(data);
+    
+// })

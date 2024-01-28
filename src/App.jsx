@@ -10,6 +10,7 @@ import FavoritesPage from './page/favoritesPage/FavoritesPage'
 import MainPage from './page/main/MainPage'
 import ProductsPage from './page/productsPage/ProductsPage'
 import Profile from './page/profile/Profile'
+import CreatePost from './page/createPost/CreatePost'
 
 const App = () => {
   const locat = useLocation();
@@ -31,7 +32,8 @@ const App = () => {
       <Routes>
         {token && <>
           <Route path={'/favorites'} element={<FavoritesPage />} />
-          {/* <Route path={'/profile'} element={<Profile />} /> */}
+          <Route path={'/profile'} element={<Profile />} />
+          <Route path='/createPost' element={<CreatePost />}/>
         </>}
         <Route path='auth' element={<Auth />} />
          <Route path={'/'} element={<MainPage />} />

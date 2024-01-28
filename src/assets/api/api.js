@@ -37,16 +37,6 @@ export const userApi = {
                 })
             })
     },
-    // getUser(username) {
-    //     return instance.get('users/user/')
-    //         .then(el => {
-    //             let arrOfUser = el.data
-    //             let user = arrOfUser.find(el => el.username === username)
-    //             setLocal('userId', user._id)
-    //             setLocal('username', user.username)
-    //             setLocal('avatarka', user.avatarka)
-    //         })
-    // },
     signIn(data, navigate, setIsLoad) {
         console.log(data);
         
@@ -69,7 +59,7 @@ export const userApi = {
             })
     },
     getUserById(id) {
-        return instance.get(`users/user/${id}/`)
+        return instance.get(`user/${id}/`)
     }
 }
 
@@ -88,6 +78,9 @@ export const productApi = {
     },
     getProductsOfCategory(id) {
         return instance.get(`post/category/${id}/`)
+    },
+    getProductsOfUser(id) {
+        return instance.get(`post/user/${id}/`)
     },
     getFavorites() {
         return instance.get('post/favorite', { headers: header })
@@ -117,6 +110,14 @@ export const productApi = {
     },
     deleteBasket(id) {
         return instance.delete(`baskets/${id}/`, { headers: header })
+    },
+    createPost(data) {
+        console.log(data);
+        if (data.image["length"] === 0) delete data.image
+        else data.image = data.image[0]
+
+        let newFormData = changeObjToForm(data)
+        return instance.post('post',newFormData, {headers: header});
     }
 }
 

@@ -14,10 +14,10 @@ const Products = ({ title, products }) => {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getCategory())
-    }, [])
-
+    // useEffect(() => {
+    //     dispatch(getCategory())
+    // }, [])
+    
     useEffect(() => {
         if(activeCategory || searchText) {
             dispatch(getPartOfProducts({category:activeCategory,searchText:searchText}))
@@ -27,12 +27,11 @@ const Products = ({ title, products }) => {
     return (
         <div className='products'>
             <div className="container">
-                <h2>{title}</h2>
                 <div className="products__dif">
                     <Category  setActiveCategory={setActiveCategory} activeCategory={activeCategory} />
                     <Search setSearchText={setSearchText} searchText={searchText} />
                 </div>
-                <ProductsList  activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} />
+                <ProductsList title={title}  activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} />
                 {/* <ProductsList  activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} /> */}
                 {/* <ProductsList activeCategory={activeCategory} products={(activeCategory || searchText) ? partOfProduct : products} load={load} /> */}
             </div>
