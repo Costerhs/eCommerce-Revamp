@@ -3,18 +3,17 @@ import favorite from '../../assets/img/favorite.svg'
 import favoriteEmpty from '../../assets/img/favoriteEmpty.svg'
 import { addFavorite, deleteFavorite } from '../../store/reducers/ActionCreator'
 import { useDispatch } from 'react-redux'
-import { delFavorite } from '../../store/reducers/ProductSlice'
-import { SlBasket } from 'react-icons/sl'
-import Swal from 'sweetalert2'
-import { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation,} from 'react-router-dom'
+import { productApi } from '../../assets/api/api'
+import { useState } from 'react'
 
 const Card = ({ data, category }) => {
     const dispatch = useDispatch()
     const token = localStorage.getItem('token')
     const location = useLocation();
     const isProfilePage = location.pathname.includes('/profile');
-    
+    const [status,setStatus] = useState(data.status);
+
     const favoriteF = () => {
         if (data.isFavorite) {
             dispatch(deleteFavorite(data._id))
@@ -23,6 +22,12 @@ const Card = ({ data, category }) => {
         }
     }
 
+    const toggleStatus = async() => {
+        await productApi.toggleStatus(!status,data._id)
+        .then(() => {
+            setStatus(!status)
+        })
+    }
 
     return (
         <div className='card'>
@@ -48,8 +53,7 @@ const Card = ({ data, category }) => {
                     </div>
                     {isProfilePage &&
                         <div className="card__active">
-                            {/* <button className="card__btn card__btn--active" >{data.status ? "Активировать" : 'Деактивировать'}</button> */}
-                            <button className={`card__btn ${data.status ? "card__btn--deactive" : "card__btn--active"}`} >{data.status ? "Деактивировать" : 'Активировать'}</button>
+                            <button onClick={() => toggleStatus()} className={`card__btn ${status ? "card__btn--deactive" : "card__btn--active"}`} >{status ? "Деактивировать" : 'Активировать'}</button>
                         </div>
                     }
             </div>

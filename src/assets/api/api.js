@@ -126,6 +126,17 @@ export const productApi = {
                 showConfirmButton: true
             })
         });
+    },
+    toggleStatus(status,id) {
+        return instance.patch(`status/${id}`,{status:status},{ headers: header })
+        .then(() => {
+            return modal.fire({
+                position: 'center',
+                icon: 'success',
+                title: `Пост успешно ${status ? 'активирован' : 'деактивирован'}!`,
+                showConfirmButton: true
+            })
+        })
     }
 }
 
