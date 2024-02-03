@@ -117,7 +117,15 @@ export const productApi = {
         else data.image = data.image[0]
 
         let newFormData = changeObjToForm(data)
-        return instance.post('post',newFormData, {headers: header});
+        return instance.post('post',newFormData, {headers: header})
+        .then(() => {
+            return modal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Пост успешно создан!',
+                showConfirmButton: true
+            })
+        });
     }
 }
 

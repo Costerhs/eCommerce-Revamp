@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { productApi } from '../../assets/api/api'
 import { getCategory } from '../../store/reducers/ActionCreator'
+import { useNavigate } from 'react-router-dom'
 
 const CreatePost = () => {
     const dispatch = useDispatch()
     const categoryData = useSelector(el => el.productReducer.category);
+    const navigate = useNavigate();
 
     const {
         register,
@@ -23,6 +25,7 @@ const CreatePost = () => {
 
     const onSubmit = async (data) => {
         await productApi.createPost(data)
+        navigate('/profile/')
     }
 
     return (
@@ -92,7 +95,6 @@ const CreatePost = () => {
                         </label>
                         {categoryData.length && <select {...register('category',{require: "*это поле обязательно к заполнению"})}>
                             {categoryData.map((el) => {
-                                console.log(el.key);
                                 return <option key={el.key} value={el.key}>
                                     {el.name}
                                 </option>
