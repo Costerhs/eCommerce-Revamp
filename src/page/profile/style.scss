@@ -65,7 +65,7 @@
             .profile__description {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 .profile__name {
                     color: black;

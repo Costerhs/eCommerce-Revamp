@@ -79,7 +79,6 @@ export const deleteFavorite = createAsyncThunk('favoriteDel',
 export const getCategory = createAsyncThunk('category',
     async () => {
         const res = await productApi.getCategory()
-        console.log(res.data.categories);
         
         return res.data.categories
     }

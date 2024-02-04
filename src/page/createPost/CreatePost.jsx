@@ -10,14 +10,12 @@ const CreatePost = () => {
     const dispatch = useDispatch()
     const categoryData = useSelector(el => el.productReducer.category);
     const navigate = useNavigate();
-
+    const [image, setImage] = useState(null);
     const {
         register,
         formState: { errors },
         handleSubmit,
-    } = useForm({
-        mode: 'onClick',
-    })
+    } = useForm()
     
     useEffect(() => {
         dispatch(getCategory())
@@ -28,11 +26,23 @@ const CreatePost = () => {
         navigate('/profile/')
     }
 
+    const handleImageChange = (e) => {
+        const file = e.target.files;
+        
+        if (file && file[0]) {
+          // Преобразовываем выбранный файл в URL
+          const imageUrl = URL.createObjectURL(file[0]);
+          setImage(imageUrl);
+        }
+      };
+      useEffect(() => {
+        console.log(image);
+      },[image])
     return (
         <div className='createPost'>
             <div className="container">
                 <h2>Разместить объявление просто!</h2>
-                <form className="createPost__form" onSubmit={handleSubmit(onSubmit)}>
+                <form className="createPost__form" enctype="multipart/form-data" onChange={handleImageChange} onSubmit={handleSubmit(onSubmit)}>
                 <div className="createPost__item createPost__description">
                         <label className="createPost__text">
                             Заголовок
@@ -109,10 +119,17 @@ const CreatePost = () => {
                             className='createPost__input'
                             type="file"
                             name="image"
+                            // onChange={handleImageChange}
                             {...register('image',{
                                 required: "*это поле обязательно к заполнению",
                             })}
                         />
+                        {image && <div className='createPost__images'>
+                                <div className='createPost__img-block'>
+                                    <img src={image} alt="Uploaded" className='createPost__img' />
+                                    <span onClick={() => setImage(null)}>x</span>
+                                </div>
+                             </div>}
                         <p className="createPost__error">{errors?.image ? errors?.image.message : ''}</p>
                     </div>
                     <button type='submit'>Опубликовать</button>

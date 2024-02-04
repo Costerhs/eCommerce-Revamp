@@ -14,6 +14,33 @@
                 display: flex;
                 flex-direction: column;
                 margin-top: 32px;
+                .createPost__images {
+                    display: flex;
+                    .createPost__img-block{
+                        margin-left: 20px;
+                        position: relative;
+                         .createPost__img {
+                            width: 120px;
+                            height: 120px;
+                            border-radius: 10px;
+                            margin-top: 8px;
+                        }
+                        span {
+                            background-color: rgb(240, 242, 247);
+                            width: 18px;
+                            height: 18px;
+                            position: absolute;
+                            right: 4px;
+                            top: 10px;
+                            cursor: pointer;
+                            // text-align: center;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 10px;
+                        }
+                    }
+                }
                 .createPost__text {
                     margin-bottom: 8px;
                     display: inline-block;
@@ -47,6 +74,7 @@
                 padding: 4px 6px;
                 border-radius: 3px;
                 color: white;
+                cursor: pointer;
             }
                 select {
                     position: relative;

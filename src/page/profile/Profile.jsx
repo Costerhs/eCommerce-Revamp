@@ -6,6 +6,7 @@ import FavoritesPage from '../favoritesPage/FavoritesPage'
 import ProfileItem from './ProfileItem'
 import './style.scss'
 import ProductsList from '../../component/productsList/ProductsList'
+import { useLocation, useParams } from 'react-router-dom'
 
 
 
@@ -16,14 +17,13 @@ const Profile = () => {
     const load = useSelector(el => el.userReducer.load)
     const products = useSelector(el => el.productReducer.userProduct)
     const [status,setStatus] = useState(true);
+    const userId = useParams().userId
 
     useEffect(() => {
-        dispatch(getUser(localStorage.getItem('userId')))
-        dispatch(getUserPost(localStorage.getItem('userId')))
+        dispatch(getUser(userId))
+        dispatch(getUserPost(userId))
     }, [])
-    // useEffect(() => {
-    //     if ()
-    // }, [products])
+
     return (
         <div className='profile'>
             <div className="container">
