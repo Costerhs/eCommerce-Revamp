@@ -32,7 +32,7 @@ const App = () => {
       <Routes>
         {token && <>
           <Route path={'/favorites'} element={<FavoritesPage />} />
-          <Route path={'/profile'} element={<Profile />} />
+          <Route path={'/profile/:userId'} element={<Profile />} />
           <Route path='/createPost' element={<CreatePost />}/>
         </>}
         <Route path='auth' element={<Auth />} />

@@ -1,6 +1,5 @@
 import './style.scss'
 import { MdFavorite } from 'react-icons/md'
-import { BsBasketFill } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import Burger from './burger/Burger'
 import Nav from './nav/Nav'
@@ -36,9 +35,6 @@ const Header = () => {
                         <div className="head__icons">
                             <NavLink to={'favorites/'}>
                                 <MdFavorite className='head__icon' />
-                            </NavLink>
-                            <NavLink to={'basket/'}>
-                                <BsBasketFill className='head__icon' />
                             </NavLink>
                         </div>
                         <NavLink to={'/profile'}>

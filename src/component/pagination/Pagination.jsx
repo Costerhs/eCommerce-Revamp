@@ -6,7 +6,8 @@ import rightBlack from '../../assets/img/rightBlack.svg'
 import { useEffect, useState } from 'react'
 
 const Pagination = ({ lengths, setOrder, order }) => {
-    const [pagNum, setPagNum] = useState(Array(Math.round(lengths / 4)).fill(null))
+    const [pagNum, setPagNum] = useState()
+    // const [pagNum, setPagNum] = useState(Array(Math.round(lengths / 4)).fill(null))
 
     useEffect(() => {
         setPagNum(Array(Math.ceil(lengths / 4)).fill(null))
@@ -18,20 +19,20 @@ const Pagination = ({ lengths, setOrder, order }) => {
 
     return (
         <div className='pagination'>
-            <div className={order <= 1 ? "pagination__arrow-disabled" : "pagination__arrow"}
+            {pagNum && <div className={order <= 1 ? "pagination__arrow-disabled" : "pagination__arrow"}
                 onClick={() => setOrder(order - 1)}>
                 <img src={order > 1 ? leftBlack : left} alt="arrow" className="pagination__img" />
-            </div>
-            {pagNum.map((el, ind) => (
+            </div>}
+            {pagNum && pagNum.map((el, ind) => (
                 <p onClick={() => setOrder(ind + 1)}
                     className={order === ind + 1 ? "pagination__num-active" : "pagination__num"}
                     key={ind}>{ind + 1}
                 </p>
             ))}
-            <div className={order === pagNum.length ? "pagination__arrow-disabled" : "pagination__arrow"}
+            {pagNum && <div className={order === pagNum.length ? "pagination__arrow-disabled" : "pagination__arrow"}
                 onClick={() => setOrder(order + 1)}>
                 <img src={order < pagNum.length ? rightBlack : right} alt="arrow" className="pagination__img" />
-            </div>
+            </div>}
         </div>
     )
 }

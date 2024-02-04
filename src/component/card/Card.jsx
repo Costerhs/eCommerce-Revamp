@@ -11,7 +11,7 @@ const Card = ({ data, category }) => {
     const dispatch = useDispatch()
     const token = localStorage.getItem('token')
     const location = useLocation();
-    const isProfilePage = location.pathname.includes('/profile');
+    const isProfilePage = location.pathname.includes('/profile213123');
     const [status,setStatus] = useState(data.status);
 
     const favoriteF = () => {

@@ -4,9 +4,7 @@
     display: flex;
     justify-content: space-around;
     gap: 20px;
-    .profile__info {
-        // border-right: 1px solid rgb(202, 202, 202);
-        
+    width: 100%;
         h2 {
             text-align: center;
             font-size: 30px;
@@ -14,41 +12,75 @@
         }
         .container {
         // flex-direction: row;
-        background: #dddee0;
+        align-items: flex-start;
         gap: 20px;
         padding: 10px 20px;
         border-radius: 20px;
-        .profile__img {
-            width: 150px;
-            height: 150px;
-            border-radius: 150px;
-            overflow: hidden;
-            img {
-                width: 100%;
-                object-fit: cover;                
-            }
-        }
-        .profile__description {
+        .profile__status {
+            width: 100%;
+            padding: 0px 16px;
+            border: 1px solid rgb(240, 242, 247);
+            border-radius: 8px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            .profile__name,.profile__email, .profile__number {
-                color: #363A45;
+            gap: 8px;
+            .profile__status--active {
+                color: rgb(34, 202, 70);
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0px;
+                    width: 100%;
+                    height: 2px;
+                    background: rgb(34, 202, 70);
+                }
+            }
+            .proflie__btn {
+                color: rgb(115, 125, 155);
+            }
+            li {
+                padding: 24px 8px;
+                font-size: 16px;
+                position: relative;
+                display: inline-flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+                cursor: pointer;
                 text-align: center;
             }
-            .profile__double {
-
+        }
+        .profileItem {
+            display: flex;
+            gap: 15px;
+            .profile__img {
+                width: 150px;
+                height: 150px;
+                border-radius: 150px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    object-fit: cover;                
+                }
             }
-            .profile__birth {
-
-            }
-            .profile__about {
-
+            .profile__description {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .profile__name {
+                    color: black;
+                    font-weight: bold;
+                    font-size: 20px;
+                }
+                .profile__number,.profile__email {
+                    color: #363A45;
+                    text-align: center;
+                }
             }
         }
     }
-    }
 }
+
 
 @media (max-width:768px) {
     .profile {

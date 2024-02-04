@@ -2,13 +2,13 @@ import React from 'react'
 
 const ProfileItem = ({ user }) => {
     return (
-        <>
+        <div className='profileItem'>
             <div className="profile__img">
                 <img src={'http://localhost:3000/uploads/' + user.avatar} alt="ava" />
             </div>
             <div className="profile__description">
                 <div className="profile__name">
-                    <b>username:</b> {user.username}
+                    {user.username}
                 </div>
                 <div className="profile__email">
                     <b>Email:</b> {user.email}
@@ -27,7 +27,7 @@ const ProfileItem = ({ user }) => {
                     About: {user.about}
                 </div> */}
             </div>
-        </>
+        </div>
     )
 }
 

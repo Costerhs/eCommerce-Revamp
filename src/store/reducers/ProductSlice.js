@@ -10,7 +10,8 @@ const initialState = {
     partOfProduct: [],
     favoritesProduct: [],
     sum: 0,
-    partOfProduct: []
+    partOfProduct: [],
+    userProduct:{}
 }
 
 export const ProductsSlice = createSlice({
@@ -41,7 +42,7 @@ export const ProductsSlice = createSlice({
         },
         [getUserPost.fulfilled.type]: (state, action) => {
             state.load = false
-            state.partOfProduct = action.payload
+            state.userProduct = action.payload
         },
         [getUserPost.pending.type]: (state, action) => {
             state.load = true
