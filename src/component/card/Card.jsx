@@ -3,7 +3,7 @@ import favorite from '../../assets/img/favorite.svg'
 import favoriteEmpty from '../../assets/img/favoriteEmpty.svg'
 import { addFavorite, deleteFavorite } from '../../store/reducers/ActionCreator'
 import { useDispatch } from 'react-redux'
-import { useLocation,} from 'react-router-dom'
+import { NavLink, useLocation,} from 'react-router-dom'
 import { productApi } from '../../assets/api/api'
 import { useState } from 'react'
 
@@ -30,7 +30,7 @@ const Card = ({ data, category }) => {
     }
 
     return (
-        <div className='card'>
+        <NavLink to={`/detailPage/${data._id}`} className='card'>
             <div className="card__btns">
                 {token && <><img src={data.isFavorite ? favorite : favoriteEmpty}
                     alt="favorite"
@@ -58,7 +58,7 @@ const Card = ({ data, category }) => {
                     }
             </div>
 
-        </div>
+        </NavLink>
     )
 }
 

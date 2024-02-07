@@ -137,6 +137,10 @@ export const productApi = {
                 showConfirmButton: true
             })
         })
+    },
+    getPostById(id) {
+        return instance.get('post/'+id)
+        .then(el => el.data)
     }
 }
 

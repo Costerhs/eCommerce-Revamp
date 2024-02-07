@@ -11,7 +11,7 @@ const initialState = {
     favoritesProduct: [],
     sum: 0,
     partOfProduct: [],
-    userProduct:{}
+    userProduct:{},
 }
 
 export const ProductsSlice = createSlice({

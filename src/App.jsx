@@ -11,6 +11,7 @@ import MainPage from './page/main/MainPage'
 import ProductsPage from './page/productsPage/ProductsPage'
 import Profile from './page/profile/Profile'
 import CreatePost from './page/createPost/CreatePost'
+import DetailPage from './page/detailPage/detailPage'
 
 const App = () => {
   const locat = useLocation();
@@ -39,6 +40,8 @@ const App = () => {
          <Route path={'/'} element={<MainPage />} />
         <Route path={'/products'} element={<ProductsPage />} />
         <Route path='/aboutUs' element={<AboutUs />} />
+        <Route path='/detailPage/:id' element={<DetailPage />} />
+
       </Routes>
       {!location && <Footer />}
     </div>

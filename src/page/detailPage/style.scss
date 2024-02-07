@@ -1,0 +1,24 @@
+.detailPage {
+    margin-top: 20px;
+    .container {
+        .detailPage__about {
+            display: flex;
+            flex-direction: row;
+            // justify-content: space-around;
+            // align-items: baseline
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .detailPage {
+        .container {
+            .detailPage__about {
+                display: flex;
+                flex-direction: column;
+                // justify-content: center;
+                // align-items: center;
+            }
+        }
+    }
+}
