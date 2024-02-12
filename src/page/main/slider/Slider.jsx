@@ -20,7 +20,7 @@ const Slider = () => {
             <Banner title={data[slide].title} text={data[slide].text} img={data[slide].img} />
             <div className="slide__pagination">
                 {data.map((el, ind) => {
-                    return <button onClick={() => setSlide(ind)} className={`slide__btn ${slide === ind && 'slide__btn-active'}`}></button>
+                    return <button key={ind} onClick={() => setSlide(ind)} className={`slide__btn ${slide === ind && 'slide__btn-active'}`}></button>
                 })}
             </div>
         </div>

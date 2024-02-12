@@ -112,8 +112,6 @@ export const getFavoritsThunk = createAsyncThunk('getFavorites',
 export const getFavorites = createAsyncThunk('getFavorites',
     async () => {
         const favArray = await productApi.getFavorites();
-        console.log(favArray);
-        
     }
 )
 
@@ -149,6 +147,12 @@ export const deletePack = createAsyncThunk('deletePack', async (arr) => {
     return
 })
 
+export const getPostByIdAndSimilarPosts = createAsyncThunk('onePostAndSimilar', 
+    async (id) => {
+        const data = await productApi.getPostById(id)
+        return data
+        
+})
 // export const createPost = createAsyncThunk('createPost', async (data) => {
 //     console.log(data);
     

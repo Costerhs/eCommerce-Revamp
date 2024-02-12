@@ -3,10 +3,11 @@ import DetailPageContact from './detailPageContact/detailPageContact'
 import DetailPagePost from './detailPagePost/detailPagePost'
 import './style.scss'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { getUser } from '../../store/reducers/ActionCreator'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPostByIdAndSimilarPosts, getUser } from '../../store/reducers/ActionCreator'
 import axios from 'axios'
 import { productApi } from '../../assets/api/api'
+import ProductsList from '../../component/productsList/ProductsList'
 
 const data = {
     "title": "comput2222er2",
@@ -20,23 +21,25 @@ const data = {
 
 const DetailPage = () => {
     const postId = useParams().id;
-    const [postData,setPostData] = useState({})
+    const postData = useSelector(el => el.productReducer.detailPost);
+    const similarPosts = useSelector(el => el.productReducer.similarPosts);
+    const category = useSelector(el => el.productReducer.category);
+    const load = useSelector(el => el.productReducer.load);
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        productApi.getPostById(postId)
-        .then(data => {
-            setPostData(data)
-        })
-    })
+        dispatch(getPostByIdAndSimilarPosts(postId))
+    },[postId])
     
 
     return (
         <div className='detailPage'>
             <div className="container">
                 <div className="detailPage__about">
-                    {postData && postData.post && <DetailPagePost data={postData.post}/> }
+                    {postData && postData.post && <DetailPagePost category={category} data={postData.post}/> }
                     {postData && postData.userData && <DetailPageContact data={postData.userData}/> }
-
                 </div>
+                {similarPosts.length > 0 && <ProductsList title={'Похожие товары'} load={load} products={similarPosts} />} 
             </div>
         </div>
     )

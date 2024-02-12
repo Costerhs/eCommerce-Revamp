@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import Swal from "sweetalert2"
 import { removeLokPropertyWithId } from "../../assets/defFunction/defFunction"
-import { addFavorite, getCategory, getProducts,getUserPost, getFavoritsThunk,deleteFavorite, deletePack, getPartOfProducts} from "./ActionCreator"
+import { addFavorite, getCategory, getProducts,getUserPost, getFavoritsThunk,deleteFavorite, deletePack, getPartOfProducts, getPostByIdAndSimilarPosts} from "./ActionCreator"
 
 const initialState = {
     load: false,
@@ -12,6 +12,8 @@ const initialState = {
     sum: 0,
     partOfProduct: [],
     userProduct:{},
+    similarPosts:[],
+    detailPost:[]
 }
 
 export const ProductsSlice = createSlice({
@@ -30,9 +32,11 @@ export const ProductsSlice = createSlice({
         [getProducts.pending.type]: (state, action) => {
             state.load = true
         },
+
         [getCategory.fulfilled.type]: (state, action) => {
             state.category = action.payload
         },
+
         [getPartOfProducts.fulfilled.type]: (state, action) => {
             state.load = false
             state.partOfProduct = action.payload
@@ -40,6 +44,7 @@ export const ProductsSlice = createSlice({
         [getPartOfProducts.pending.type]: (state, action) => {
             state.load = true
         },
+
         [getUserPost.fulfilled.type]: (state, action) => {
             state.load = false
             state.userProduct = action.payload
@@ -47,6 +52,7 @@ export const ProductsSlice = createSlice({
         [getUserPost.pending.type]: (state, action) => {
             state.load = true
         },
+
         [getFavoritsThunk.fulfilled.type]: (state, action) => {
             state.partOfProduct = action.payload
             state.load = false
@@ -54,12 +60,14 @@ export const ProductsSlice = createSlice({
         [getFavoritsThunk.pending.type]: (state, action) => {
             state.load = true
         },
+
         [deletePack.pending.type]: (state, action) => {
             state.loadBasket = true
         },
         [deletePack.rejected.type]: (state, action) => {
             state.loadBasket = false
         },
+
         [deleteFavorite.fulfilled.type]: (state, action) => {
             state.products.map(el => {
                 if (el._id === action.payload) {
@@ -83,6 +91,14 @@ export const ProductsSlice = createSlice({
                     el.isFavorite = true
                 }
             })
+        },
+        [getPostByIdAndSimilarPosts.fulfilled.type]: (state, action) => {
+            state.detailPost = action.payload.post
+            state.similarPosts = action.payload.similarPosts
+            state.load = false
+        },
+        [getPostByIdAndSimilarPosts.pending.type]: (state, action) => {
+            state.load = true
         },
         // [createPost.fulfilled.type]: (state, action) => {
             

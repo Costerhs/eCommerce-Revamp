@@ -2,9 +2,6 @@ import { useEffect } from 'react';
 import './style.scss'
 
 const DetailPageContact = ({data}) => {
-    useEffect(() => {
-        console.log(data);
-    }, [])
     return (
             <div className="detailPage__contact">
                 <div className="detailPage__info">
