@@ -27,6 +27,17 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            .head__btn {
+                background: #00C65E;
+                padding: 4px 8px;
+                border-radius: 10px;
+                button {
+                    color: white;
+                    &::after {
+                        content: 'Добавить обьявление';
+                    }
+                }
+            }
             .head__icons {
                 display: flex;
                 gap: 10px;   
@@ -71,6 +82,23 @@
     }
 }
 
+@media (max-width:768px) {
+    .head {
+        .container {
+            .head__user {
+                .head__btn {
+                    padding: 2px 8px;
+                    button {
+                        &::after {
+                            content: '+';
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 @media (max-width:568px) {
     .head {
         .container {
@@ -80,6 +108,7 @@
                 }
             }
             .head__user {
+                
                 .head__menu-btn {
                     display: block;
                     z-index: 5;

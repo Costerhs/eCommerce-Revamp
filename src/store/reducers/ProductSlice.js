@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import Swal from "sweetalert2"
 import { removeLokPropertyWithId } from "../../assets/defFunction/defFunction"
-import { addFavorite, getCategory, getProducts,getUserPost, getFavoritsThunk,deleteFavorite, deletePack, getPartOfProducts, getPostByIdAndSimilarPosts} from "./ActionCreator"
+import { addFavorite, getCategory, getProducts,getUserPost, getFavoritsThunk,deleteFavorite, deletePack, getPartOfProducts, getPostByIdAndSimilarPosts, getMyPost} from "./ActionCreator"
 
 const initialState = {
     load: false,
@@ -10,10 +10,10 @@ const initialState = {
     partOfProduct: [],
     favoritesProduct: [],
     sum: 0,
-    partOfProduct: [],
     userProduct:{},
     similarPosts:[],
-    detailPost:[]
+    detailPost:[],
+    myProducts:[]
 }
 
 export const ProductsSlice = createSlice({
@@ -100,9 +100,14 @@ export const ProductsSlice = createSlice({
         [getPostByIdAndSimilarPosts.pending.type]: (state, action) => {
             state.load = true
         },
-        // [createPost.fulfilled.type]: (state, action) => {
-            
-        // },
+        [getMyPost.fulfilled.type]: (state, action) => {
+            state.myProducts = action.payload
+            state.load = false
+        },
+        [getMyPost.pending.type]: (state, action) => {
+            state.load = true
+        },
+
     }
 }
 )

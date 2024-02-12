@@ -12,6 +12,7 @@ import ProductsPage from './page/productsPage/ProductsPage'
 import Profile from './page/profile/Profile'
 import CreatePost from './page/createPost/CreatePost'
 import DetailPage from './page/detailPage/detailPage'
+import MyProfile from './page/myProfile/MyProfile'
 
 const App = () => {
   const locat = useLocation();
@@ -33,14 +34,15 @@ const App = () => {
       <Routes>
         {token && <>
           <Route path={'/favorites'} element={<FavoritesPage />} />
-          <Route path={'/profile/:userId'} element={<Profile />} />
           <Route path='/createPost' element={<CreatePost />}/>
+          <Route path='/myProfile' element={<MyProfile />} />
         </>}
         <Route path='auth' element={<Auth />} />
          <Route path={'/'} element={<MainPage />} />
         <Route path={'/products'} element={<ProductsPage />} />
         <Route path='/aboutUs' element={<AboutUs />} />
         <Route path='/detailPage/:id' element={<DetailPage />} />
+        <Route path={'/profile/:userId'} element={<Profile />} />
 
       </Routes>
       {!location && <Footer />}

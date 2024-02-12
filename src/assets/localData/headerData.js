@@ -16,7 +16,7 @@ const navObj = [
     },
     {
         name: 'Профиль',
-        location: '/profile/',
+        location: '/myProfile/',
         private: true
     },
 ]

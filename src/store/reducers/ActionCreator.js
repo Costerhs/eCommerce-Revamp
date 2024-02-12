@@ -131,6 +131,14 @@ export const getUserPost = createAsyncThunk('usersPost',
         return data
     }
 )
+export const getMyPost = createAsyncThunk('MyPost',
+    async () => {
+        const res = await productApi.getMyProducts();
+        const data = res.data
+        
+        return data
+    }
+)
 
 export const deletePack = createAsyncThunk('deletePack', async (arr) => {
     //когда num будет количеству продуктов то будет await чтобы после await сделать запрос на get baskets

@@ -3,7 +3,7 @@ import favorite from '../../assets/img/favorite.svg'
 import favoriteEmpty from '../../assets/img/favoriteEmpty.svg'
 import { addFavorite, deleteFavorite } from '../../store/reducers/ActionCreator'
 import { useDispatch } from 'react-redux'
-import { NavLink, useLocation,} from 'react-router-dom'
+import { NavLink, useLocation, useNavigate,} from 'react-router-dom'
 import { productApi } from '../../assets/api/api'
 import { useState } from 'react'
 
@@ -11,8 +11,9 @@ const Card = ({ data, category }) => {
     const dispatch = useDispatch()
     const token = localStorage.getItem('token')
     const location = useLocation();
-    const isProfilePage = location.pathname.includes('/profile213123');
+    const isProfilePage = location.pathname.includes('/myProfile');
     const [status,setStatus] = useState(data.status);
+    const navigate = useNavigate();
 
     const favoriteF = () => {
         if (data.isFavorite) {
@@ -22,15 +23,21 @@ const Card = ({ data, category }) => {
         }
     }
 
-    const toggleStatus = async() => {
+    const toggleStatus = async(e) => {
         await productApi.toggleStatus(!status,data._id)
         .then(() => {
             setStatus(!status)
         })
     }
 
+    const redirect = (e) => {
+        if(e.target.tagName !== 'BUTTON') {
+            navigate(`/detailPage/${data._id}`)
+        }
+    }
+
     return (
-        <NavLink to={`/detailPage/${data._id}`} className='card'>
+        <div className='card' onClick={redirect}>
             <div className="card__btns">
                 {token && <><img src={data.isFavorite ? favorite : favoriteEmpty}
                     alt="favorite"
@@ -58,7 +65,7 @@ const Card = ({ data, category }) => {
                     }
             </div>
 
-        </NavLink>
+        </div>
     )
 }
 

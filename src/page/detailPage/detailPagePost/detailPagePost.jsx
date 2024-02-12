@@ -11,7 +11,7 @@ const DetailPagePost = ({data, category}) => {
             <div className="detailPage__description">
                 <h2 className="detailPage__title">{data.title}</h2>
                 <p className="detailPage__price">{data.price} сом</p>
-                {category && <p className="detailPage__category">Категория <span>{category.find(item => item.key == data.category).name}</span></p>}
+                {category.length > 0 && <p className="detailPage__category">Категория <span>{category.find(item => item.key == data.category).name}</span></p>}
                 
                 <div className="detailPage__text">
                     <h3>Описание</h3>

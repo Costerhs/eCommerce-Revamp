@@ -32,6 +32,9 @@ const Header = () => {
                     {/* <img src={localStorage.getItem("avatarka")} alt='avatar' />
                     <p>{localStorage.getItem('username')}</p> */}
                     {token ? <>
+                        <NavLink to={'/createPost'} className="head__btn">
+                                <button></button>
+                        </NavLink>
                         <div className="head__icons">
                             <NavLink to={'favorites/'}>
                                 <MdFavorite className='head__icon' />

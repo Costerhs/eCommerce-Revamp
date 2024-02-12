@@ -82,6 +82,11 @@ export const productApi = {
     getProductsOfUser(id) {
         return instance.get(`post/user/${id}/`)
     },
+    getMyProducts() {
+        console.log(header);
+        
+        return instance.get(`post/myPost/`, {headers:header})
+    },
     getFavorites() {
         return instance.get('post/favorite', { headers: header })
     },
