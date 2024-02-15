@@ -63,7 +63,7 @@ export const getPartOfProducts = createAsyncThunk('partOfProducts', async (data)
 });
 
 export const addFavorite = createAsyncThunk('favorite',
-    async (id) => {
+    async (id) => { 
         await productApi.postFavorite(id)
         return id
     }
@@ -161,7 +161,10 @@ export const getPostByIdAndSimilarPosts = createAsyncThunk('onePostAndSimilar',
         return data
         
 })
-// export const createPost = createAsyncThunk('createPost', async (data) => {
-//     console.log(data);
-    
-// })
+
+export const toggleStatusOfProduct = createAsyncThunk('toggleStatusOfProduct', 
+    async ({status,productId}) => {
+        let data = await productApi.toggleStatus(!status,productId)
+        .then(() => productId)
+        return data
+})  

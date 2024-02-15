@@ -41,7 +41,7 @@ const ProductsList = ({ load,title, products, activeCategory }) => {
                 })}
                 {products.length === 0 && !load && 'Товары отсутствуют'}
             </div>
-            {products && products.length && <Pagination lengths={products.length} order={order} setOrder={setOrder} />}
+            {products && products.length && <Pagination lengths={products.length || []} order={order} setOrder={setOrder} />}
         </div>
     )
 }

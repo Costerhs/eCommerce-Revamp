@@ -6,7 +6,7 @@ import rightBlack from '../../assets/img/rightBlack.svg'
 import { useEffect, useState } from 'react'
 
 const Pagination = ({ lengths, setOrder, order }) => {
-    const [pagNum, setPagNum] = useState()
+    const [pagNum, setPagNum] = useState([])
     // const [pagNum, setPagNum] = useState(Array(Math.round(lengths / 4)).fill(null))
 
     useEffect(() => {

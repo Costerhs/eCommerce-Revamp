@@ -23,7 +23,6 @@
                             width: 120px;
                             height: 120px;
                             border-radius: 10px;
-                            margin-top: 8px;
                         }
                         span {
                             background-color: rgb(240, 242, 247);
@@ -49,6 +48,20 @@
                     line-height: 24px;
                     color: rgb(10, 19, 49);
                 }
+                .createPost__input-file-text {
+                    // border: 1px solid rgb(217, 221, 231);
+                    text-align: center;
+                    padding: 30px 10px;
+                    border-radius: 6px;
+                    width: 120px;
+                    height: 120px;
+                    font-size: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background: rgb(240, 242, 247);
+                    cursor: pointer;
+                }
                 input::-webkit-outer-spin-button,
                 input::-webkit-inner-spin-button {
                     /* display: none; <- Crashes Chrome on hover */
@@ -56,6 +69,8 @@
                     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
                 }
                 .createPost__input{
+
+                    overflow: none;
                     padding: 12px;
                     outline: none;
                     background: rgb(255, 255, 255);
@@ -68,14 +83,17 @@
                     transition: all 0.2s ease-in-out 0s;
                     font-family: inherit;
                 }
-                ::-webkit-file-upload-button {
-                background:#00C65E ;
-                border: none;
-                padding: 4px 6px;
-                border-radius: 3px;
-                color: white;
-                cursor: pointer;
-            }
+                .createPost__file {
+                    display: none;
+                }
+            //     ::-webkit-file-upload-button {
+            //     background:#00C65E ;
+            //     border: none;
+            //     padding: 4px 6px;
+            //     border-radius: 3px;
+            //     color: white;
+            //     cursor: pointer;
+            // }
                 select {
                     position: relative;
                     display: block;
@@ -95,6 +113,11 @@
                     // position: absolute;
                     // bottom: -14px;
                 }
+            }
+            .createPost__addImage {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
             }
             button {
                 background-color: #22ca46;

@@ -1,7 +1,7 @@
 import './style.scss'
 import favorite from '../../assets/img/favorite.svg'
 import favoriteEmpty from '../../assets/img/favoriteEmpty.svg'
-import { addFavorite, deleteFavorite } from '../../store/reducers/ActionCreator'
+import { addFavorite, deleteFavorite, toggleStatusOfProduct } from '../../store/reducers/ActionCreator'
 import { useDispatch } from 'react-redux'
 import { NavLink, useLocation, useNavigate,} from 'react-router-dom'
 import { productApi } from '../../assets/api/api'
@@ -12,7 +12,6 @@ const Card = ({ data, category }) => {
     const token = localStorage.getItem('token')
     const location = useLocation();
     const isProfilePage = location.pathname.includes('/myProfile');
-    const [status,setStatus] = useState(data.status);
     const navigate = useNavigate();
 
     const favoriteF = () => {
@@ -24,10 +23,7 @@ const Card = ({ data, category }) => {
     }
 
     const toggleStatus = async(e) => {
-        await productApi.toggleStatus(!status,data._id)
-        .then(() => {
-            setStatus(!status)
-        })
+        dispatch(toggleStatusOfProduct({status:data.status,productId:data._id}))
     }
 
     const redirect = (e) => {
@@ -45,7 +41,7 @@ const Card = ({ data, category }) => {
 
             </div>
             <div className="card__img">
-                <img src={`http://localhost:3000/uploads/${data.image}`} alt="img" />
+                <img src={`http://localhost:3000/uploads/${data.images[0]}`} alt="img" />
             </div>
             <div className="card__description">
                     {category && <div className="card__category">
@@ -60,7 +56,7 @@ const Card = ({ data, category }) => {
                     </div>
                     {isProfilePage &&
                         <div className="card__active">
-                            <button onClick={() => toggleStatus()} className={`card__btn ${status ? "card__btn--deactive" : "card__btn--active"}`} >{status ? "Деактивировать" : 'Активировать'}</button>
+                            <button onClick={() => toggleStatus()} className={`card__btn ${data.status ? "card__btn--deactive" : "card__btn--active"}`} >{data.status ? "Деактивировать" : 'Активировать'}</button>
                         </div>
                     }
             </div>

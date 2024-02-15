@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { productApi } from '../../assets/api/api'
 import { getCategory } from '../../store/reducers/ActionCreator'
 import { useNavigate } from 'react-router-dom'
+import {FaCamera} from 'react-icons/fa'
 
 const CreatePost = () => {
     const dispatch = useDispatch()
     const categoryData = useSelector(el => el.productReducer.category);
     const navigate = useNavigate();
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState([]);
+    const [imageFile,setImageFile] = useState([]);
     const {
         register,
         formState: { errors },
@@ -22,27 +24,55 @@ const CreatePost = () => {
     }, [])
 
     const onSubmit = async (data) => {
+        data.images = imageFile
         await productApi.createPost(data)
-        navigate('/profile/')
+        // navigate('/profile/')
     }
 
     const handleImageChange = (e) => {
         const file = e.target.files;
         
         if (file && file[0]) {
-          // Преобразовываем выбранный файл в URL
           const imageUrl = URL.createObjectURL(file[0]);
-          setImage(imageUrl);
+        //   setImageFile([...imageFile, file])
+          setImageFile([...imageFile, file[0]])
+          setImage((el) => [...el,imageUrl]);
         }
       };
-      useEffect(() => {
-        console.log(image);
-      },[image])
     return (
         <div className='createPost'>
             <div className="container">
                 <h2>Разместить объявление просто!</h2>
                 <form className="createPost__form" enctype="multipart/form-data" onChange={handleImageChange} onSubmit={handleSubmit(onSubmit)}>
+                <div className="createPost__item createPost__addImage">
+                        <div className='createPost__images'>
+                            {image.length > 0 &&
+                                image.map(el => {
+                                    return <div className='createPost__img-block'>
+                                    <img src={el} alt="Uploaded" className='createPost__img' />
+                                    <span onClick={() => setImage(image.filter(img => img !== el))}>x</span>
+                                </div>
+                                })
+                                }
+                        </div>
+                        <label className="createPost__text createPost__input-file-text" for='image'>
+                            <FaCamera />
+                            Загрузить фото
+                        </label>
+                        <input
+                            id='image'
+                            className='createPost__input createPost__file'
+                            type="file"
+                            name="image"
+                            // onChange={handleImageChange}
+                            // value={image}
+                            {...register('images',{
+                                required: "*это поле обязательно к заполнению",
+                            })}
+                        />
+
+                        <p className="createPost__error">{errors?.image ? errors?.image.message : ''}</p>
+                    </div>
                 <div className="createPost__item createPost__description">
                         <label className="createPost__text">
                             Заголовок
@@ -111,27 +141,7 @@ const CreatePost = () => {
                             })}
                         </select>}
                     </div>
-                    <div className="createPost__item createPost__image">
-                        <label className="createPost__text">
-                            Загрузите фото
-                        </label>
-                        <input
-                            className='createPost__input'
-                            type="file"
-                            name="image"
-                            // onChange={handleImageChange}
-                            {...register('image',{
-                                required: "*это поле обязательно к заполнению",
-                            })}
-                        />
-                        {image && <div className='createPost__images'>
-                                <div className='createPost__img-block'>
-                                    <img src={image} alt="Uploaded" className='createPost__img' />
-                                    <span onClick={() => setImage(null)}>x</span>
-                                </div>
-                             </div>}
-                        <p className="createPost__error">{errors?.image ? errors?.image.message : ''}</p>
-                    </div>
+                   
                     <button type='submit'>Опубликовать</button>
                 </form>
             </div>

@@ -116,12 +116,31 @@ export const productApi = {
     deleteBasket(id) {
         return instance.delete(`baskets/${id}/`, { headers: header })
     },
+
+
+
+
     createPost(data) {
         console.log(data);
-        if (data.image["length"] === 0) delete data.image
-        else data.image = data.image[0]
+        
+        // if (data.images && data.images.length > 0) {
+        //     data.images.forEach((image, index) => {
+        //         newFormData.append(`image${index}`, image);
+        //     });
+        //     // Удаляем свойство из исходного объекта, чтобы оно не было отправлено в JSON формате
+        //     delete data.images;
+        // }
+
+        //  if (data.images["length"] === 0) delete data.images
+        // else data.images = data.images[0]
+
 
         let newFormData = changeObjToForm(data)
+        for (const pair of newFormData.entries()) {
+            pair[1] = [pair[1]]
+            console.log(pair[0], pair[1]);
+          }
+        
         return instance.post('post',newFormData, {headers: header})
         .then(() => {
             return modal.fire({
@@ -132,6 +151,11 @@ export const productApi = {
             })
         });
     },
+
+
+
+
+
     toggleStatus(status,id) {
         return instance.patch(`status/${id}`,{status:status},{ headers: header })
         .then(() => {
