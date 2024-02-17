@@ -3,8 +3,8 @@ import { default as modal } from 'sweetalert2';
 import { changeObjToForm, setLocal } from "../defFunction/defFunction";
 
 const instance = axios.create({
-    baseURL: `https://marketapi-uje5.onrender.com`
-    // baseURL: `http://localhost:3000/`
+    // baseURL: `https://marketapi-uje5.onrender.com`
+    baseURL: `http://localhost:3000/`
 });
 let header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
 

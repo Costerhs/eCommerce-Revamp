@@ -4,7 +4,7 @@ const ProfileItem = ({ user }) => {
     return (
         <div className='profileItem'>
             <div className="profile__img">
-                <img src={'https://marketapi-uje5.onrender.com/uploads/' + user.avatar} alt="ava" />
+                <img src={'http://localhost:3000/uploads/' + user.avatar} alt="ava" />
             </div>
             <div className="profile__description">
                 <div className="profile__name">
