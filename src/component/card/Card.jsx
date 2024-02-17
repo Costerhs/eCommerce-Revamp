@@ -41,7 +41,7 @@ const Card = ({ data, category }) => {
 
             </div>
             <div className="card__img">
-                <img src={`http://localhost:3000/uploads/${data.images[0]}`} alt="img" />
+                <img src={`https://marketapi-uje5.onrender.com/uploads/${data.images[0]}`} alt="img" />
             </div>
             <div className="card__description">
                     {category && <div className="card__category">
