@@ -6,7 +6,7 @@ const DetailPagePost = ({data, category}) => {
     return (
         <div className="detailPage__post">
             <div className="detailPage__img">
-                <img src={'http://localhost:3000/uploads/'+data.images[0]} alt="" />
+                <img src={'https://marketapi-uje5.onrender.com/uploads/'+data.images[0]} alt="" />
             </div>
             <div className="detailPage__description">
                 <h2 className="detailPage__title">{data.title}</h2>
