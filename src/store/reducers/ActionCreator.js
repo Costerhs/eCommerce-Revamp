@@ -168,3 +168,11 @@ export const toggleStatusOfProduct = createAsyncThunk('toggleStatusOfProduct',
         .then(() => productId)
         return data
 })  
+
+
+export const deleteProduct = createAsyncThunk('delProduct',
+    async (id) => {
+        await productApi.deleteProduct(id)
+        return id
+    }
+)

@@ -16,6 +16,10 @@ const MyProfile = () => {
         dispatch(getMyPost())
     }, [])
 
+    useEffect(() => {
+        console.log(products);
+    },[products])
+
     return (
         <div className='myProfile'>
             <div className="container">

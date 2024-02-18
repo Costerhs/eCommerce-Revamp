@@ -26,10 +26,11 @@ const ProductsList = ({ load,title, products, activeCategory }) => {
 
     useEffect(() => {
         dispatch(getCategory())
-    },[])
+    },[]);
+
     useEffect(() => {
         setOrder(1)
-    }, [products])
+    }, [])
 
     return (
         <div className='productsList'>

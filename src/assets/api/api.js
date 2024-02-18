@@ -171,6 +171,18 @@ export const productApi = {
     getPostById(id) {
         return instance.get('post/'+id)
         .then(el => el.data)
+    },
+
+    deleteProduct(id) {
+        return instance.delete('/post/'+id, {headers:header})
+        .then(() => {
+            return modal.fire({
+                position: 'center',
+                icon: 'success',
+                title: `Пост успешно удален'!`,
+                showConfirmButton: true
+            })
+        })
     }
 }
 
