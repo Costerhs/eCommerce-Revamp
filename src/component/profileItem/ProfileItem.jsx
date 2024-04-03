@@ -1,10 +1,14 @@
 import React from 'react'
+import './style.scss'
 
 const ProfileItem = ({ user }) => {
     return (
         <div className='profileItem'>
             <div className="profile__img">
-                <img src={'http://localhost:3000/uploads/' + user.avatar} alt="ava" />
+                {user.avatar ? <img src={'http://localhost:3000/uploads/' + user.avatar} alt="ava" /> :
+                <img src={'https://sneg.top/uploads/posts/2023-06/1687623160_sneg-top-p-otsutstvie-avatarki-pinterest-22.jpg'} alt="ava" />
+                }
+                
             </div>
             <div className="profile__description">
                 <div className="profile__name">
@@ -16,16 +20,6 @@ const ProfileItem = ({ user }) => {
                 <div className="profile__number">
                     <b>Phone Number:</b> {user.phone_number}
                 </div>
-                {/* <div className="profile__double">
-                    <p>Email: {user.email}</p>
-                    <p>Phone Number: {user.phone_number}</p>
-                </div> */}
-                {/* <div className="profile__birth">
-                    Birth Date: {user.birth_date}
-                </div> */}
-                {/* <div className="profile__about">
-                    About: {user.about}
-                </div> */}
             </div>
         </div>
     )

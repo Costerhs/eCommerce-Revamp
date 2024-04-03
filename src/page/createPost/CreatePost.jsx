@@ -26,7 +26,7 @@ const CreatePost = () => {
     const onSubmit = async (data) => {
         data.images = imageFile
         await productApi.createPost(data)
-        // navigate('/profile/')
+        navigate('/myProfile/')
     }
 
     const handleImageChange = (e) => {

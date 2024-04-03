@@ -40,7 +40,7 @@ const Header = () => {
                                 <MdFavorite className='head__icon' />
                             </NavLink>
                         </div>
-                        <NavLink to={'/profile'}>
+                        <NavLink to={'/myProfile'}>
                             <RxAvatar className='head__icon-ava' />
                         </NavLink>
                         <NavLink to={'/auth'}>

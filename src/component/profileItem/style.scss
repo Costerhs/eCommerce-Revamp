@@ -1,0 +1,32 @@
+.profileItem {
+    display: flex;
+    gap: 15px;
+    .profile__img {
+        width: 150px;
+        height: 150px;
+        border-radius: 150px;
+        overflow: hidden;
+        display: flex;
+        // align-items: center;
+        // justify-content: center;
+        img {
+            width: 100%;
+            object-fit: cover;                
+        }
+    }
+    .profile__description {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        .profile__name {
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .profile__number,.profile__email {
+            color: #363A45;
+            text-align: center;
+        }
+    }
+}
