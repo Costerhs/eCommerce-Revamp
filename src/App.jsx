@@ -31,7 +31,7 @@ const App = () => {
   return (
     <div className="App">
       {!location && <Header />}
-      <Routes>
+        <Routes>
         {token && <>
           <Route path={'/favorites'} element={<FavoritesPage />} />
           <Route path='/createPost' element={<CreatePost />}/>

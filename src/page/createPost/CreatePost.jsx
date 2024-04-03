@@ -141,6 +141,7 @@ const CreatePost = () => {
                             })}
                         </select>}
                     </div>
+
                    
                     <button type='submit'>Опубликовать</button>
                 </form>
