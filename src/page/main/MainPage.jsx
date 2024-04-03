@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-
-import LoaderList from '../../component/loaderOfCard/LoaderList';
 import ProductsList from '../../component/productsList/ProductsList';
 import { getProducts } from '../../store/reducers/ActionCreator';
 import Slider from './slider/Slider';
 import './style.scss'
+import Swipers from '../../component/swiper/Swipers';
 
 const MainPage = () => {
     const products = useSelector(el => el.productReducer.products)
@@ -18,7 +17,8 @@ const MainPage = () => {
 
     return (
         <div className='main'>
-            <Slider />
+            <Swipers />
+            {/* <Slider /> */}
             <div className="container">
                 <h2>Популярные товары</h2>
                 <ProductsList load={load} products={products} />

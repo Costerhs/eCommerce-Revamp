@@ -1,7 +1,7 @@
 import './style.scss'
 import favorite from '../../assets/img/favorite.svg'
 import favoriteEmpty from '../../assets/img/favoriteEmpty.svg'
-import { addFavorite, deleteFavorite, toggleStatusOfProduct } from '../../store/reducers/ActionCreator'
+import { addFavorite, deleteFavorite, deleteProduct, toggleStatusOfProduct } from '../../store/reducers/ActionCreator'
 import { useDispatch } from 'react-redux'
 import { NavLink, useLocation, useNavigate,} from 'react-router-dom'
 import { productApi } from '../../assets/api/api'
@@ -27,16 +27,22 @@ const Card = ({ data, category }) => {
     }
 
     const redirect = (e) => {
-        if(e.target.tagName !== 'BUTTON') {
+        // console.log(e.target.className);
+        if(e.target.tagName !== 'BUTTON' && e.target.className !== 'card__favorite-img') {
             navigate(`/detailPage/${data._id}`)
         }
+    }
+
+    const deleteThisProduct = async() => {
+        dispatch(deleteProduct(data._id))
     }
 
     return (
         <div className='card' onClick={redirect}>
             <div className="card__btns">
-                {token && <><img src={data.isFavorite ? favorite : favoriteEmpty}
+                {token && !isProfilePage && <><img src={data.isFavorite ? favorite : favoriteEmpty}
                     alt="favorite"
+                    className='card__favorite-img'
                     onClick={favoriteF} /></>}
 
             </div>
@@ -55,9 +61,15 @@ const Card = ({ data, category }) => {
                         {data.price} сом
                     </div>
                     {isProfilePage &&
+                        <>
                         <div className="card__active">
                             <button onClick={() => toggleStatus()} className={`card__btn ${data.status ? "card__btn--deactive" : "card__btn--active"}`} >{data.status ? "Деактивировать" : 'Активировать'}</button>
                         </div>
+                        <div className="card__delete">
+                            <button onClick={() => deleteThisProduct()} className='card__delete-btn' >Удалить</button>
+                        </div>
+                        
+                        </>
                     }
             </div>
 

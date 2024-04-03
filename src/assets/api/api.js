@@ -3,8 +3,8 @@ import { default as modal } from 'sweetalert2';
 import { changeObjToForm, setLocal } from "../defFunction/defFunction";
 
 const instance = axios.create({
-    baseURL: `https://marketapi-uje5.onrender.com`
-    // baseURL: `http://localhost:3000/`
+    // baseURL: `https://marketapi-uje5.onrender.com`
+    baseURL: `http://localhost:3000/`
 });
 let header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
 
@@ -171,6 +171,18 @@ export const productApi = {
     getPostById(id) {
         return instance.get('post/'+id)
         .then(el => el.data)
+    },
+
+    deleteProduct(id) {
+        return instance.delete('/post/'+id, {headers:header})
+        .then(() => {
+            return modal.fire({
+                position: 'center',
+                icon: 'success',
+                title: `Пост успешно удален'!`,
+                showConfirmButton: true
+            })
+        })
     }
 }
 

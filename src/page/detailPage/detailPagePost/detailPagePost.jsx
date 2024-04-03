@@ -6,7 +6,7 @@ const DetailPagePost = ({data, category}) => {
     return (
         <div className="detailPage__post">
             <div className="detailPage__img">
-                <img src={'https://marketapi-uje5.onrender.com/uploads/'+data.images[0]} alt="" />
+                <img src={'http://localhost:3000/uploads/'+data.images[0]} alt="" />
             </div>
             <div className="detailPage__description">
                 <h2 className="detailPage__title">{data.title}</h2>
@@ -15,7 +15,9 @@ const DetailPagePost = ({data, category}) => {
                 
                 <div className="detailPage__text">
                     <h3>Описание</h3>
-                    <p>В небольшом городке, затерянном среди холмов и лесов, жила девочка по имени Алиса. Она была особенной - необыкновенно любознательной и вечно жаждущей новых приключений. Каждый день после школы, когда другие дети играли во дворе, Алиса исследовала окрестности, находя загадочные тропинки и заброшенные домики.</p>
+                    {/* <p>asdsd</p> */}
+                    <p>{data.description}</p>
+                    {/* <p>В небольшом городке, затерянном среди холмов и лесов, жила девочка по имени Алиса. Она была особенной - необыкновенно любознательной и вечно жаждущей новых приключений. Каждый день после школы, когда другие дети играли во дворе, Алиса исследовала окрестности, находя загадочные тропинки и заброшенные домики.</p> */}
                 </div>
             </div>
         </div>

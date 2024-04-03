@@ -26,17 +26,18 @@ const ProductsList = ({ load,title, products, activeCategory }) => {
 
     useEffect(() => {
         dispatch(getCategory())
-    },[])
+    },[]);
+
     useEffect(() => {
         setOrder(1)
-    }, [products])
+    }, [])
 
     return (
         <div className='productsList'>
             <h2>{title}</h2>
             <div className="productsList__list" ref={productListRef}>
                 {load && <LoaderList />}
-                {products.length > 0 && !load && products.slice((order * 8) - 8, order * 8).map((el, ind) => {
+                {products.length > 0 && !load && products.slice((order * 6) - 6, order * 6).map((el, ind) => {
                     return <Card data={el} key={ind} category={category.find(item => item.key == el.category)} />
                 })}
                 {products.length === 0 && !load && 'Товары отсутствуют'}

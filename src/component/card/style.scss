@@ -94,5 +94,20 @@
                 }
             }
         }
+        .card__delete {
+            .card__delete-btn {
+                text-align: center;
+                width: 80px;
+                height: 20px;
+                border-radius: 5px;
+                color: white;
+                padding: 2px;
+                font-size: 12px;
+                background: red;
+                &:hover {
+                    background: rgb(240, 80, 80);
+                }
+            }
+        }
     }
 }

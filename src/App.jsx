@@ -13,6 +13,7 @@ import Profile from './page/profile/Profile'
 import CreatePost from './page/createPost/CreatePost'
 import DetailPage from './page/detailPage/detailPage'
 import MyProfile from './page/myProfile/MyProfile'
+import ScrollUp from './component/scrollUp/ScrollUp'
 
 const App = () => {
   const locat = useLocation();
@@ -31,7 +32,8 @@ const App = () => {
   return (
     <div className="App">
       {!location && <Header />}
-      <Routes>
+        <ScrollUp />
+        <Routes>
         {token && <>
           <Route path={'/favorites'} element={<FavoritesPage />} />
           <Route path='/createPost' element={<CreatePost />}/>
